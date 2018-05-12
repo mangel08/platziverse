@@ -1,26 +1,17 @@
 'use strict'
 
-function extend (obj, values) {
+const extend = (obj, values) => {
   const clone = Object.assign({}, obj)
   return Object.assign(clone, values)
 }
 
-function sortBy (property) {
-  return (a, b) => {
-    let aProp = a[property]
-    let bProp = b[property]
-
-    if (aProp < bProp) {
-      return -1
-    } else if (aProp > bProp) {
-      return 1
-    } else {
-      return 0
-    }
-  }
-};
+const handleFatalError = (err) => {
+  console.error(err.message)
+  console.error(err.stack)
+  process.exit(1)
+}
 
 module.exports = {
   extend,
-  sortBy
+  handleFatalError
 }
